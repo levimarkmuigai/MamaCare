@@ -1,4 +1,4 @@
-package com.example.MamaCare.MicroServices.GenerateId;
+package com.example.MamaCare.MicroServices;
 
 import java.security.SecureRandom;
 
