@@ -4,16 +4,16 @@ import jakarta.validation.constraints.*;
 import jakarta.persistence.*;
 import org.hibernate.validator.constraints.URL;
 
-import com.example.MamaCare.MicroService.GenerateId.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="Patient")
 public class Patient{
     
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Id", nullable=false)
-    @NotNull
+    @Id
     private Long id;
 
     @Column(name="FirstName", nullable=false)
@@ -52,21 +52,21 @@ public class Patient{
 
     @Column(name="Age", nullable=false)
     @Past
-    private Date age;
+    private LocalDate age;
 
     
     @Column(name="DueDate", nullable=false)
     @Future
-    private Date dueDate;
+    private LocalDate dueDate;
 
     @Column(name="Preexisting Condition")
     @NotNull(message="Should be true or false!")
     private Boolean preCondition;
 
     public Patient(Long id, String firstName, String lastName, String email, String address,
-                    Boolean spouce, int phoneNumber, Date age, Date dueDate, Boolean preCondition){
+                    Boolean spouce, int phoneNumber, LocalDate age, LocalDate dueDate, Boolean preCondition){
         
-        this.id = (id != null) ? id : new GenerateId.generateId();
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -97,7 +97,7 @@ public class Patient{
         return this.email;
     }
 
-    public Date getAge(){
+    public LocalDate getAge(){
         return this.age;
     }
 
@@ -113,7 +113,7 @@ public class Patient{
         return this.phoneNumber;
     }
 
-    public Date getDueDate(){
+    public LocalDate getDueDate(){
         return this.dueDate;
     }
     
@@ -134,7 +134,7 @@ public class Patient{
         this.email = email;
     }
 
-    public void age(Date age){
+    public void age(LocalDate age){
         this.age = age;
     }
 
@@ -150,7 +150,7 @@ public class Patient{
         this.phoneNumber = phoneNumber;
     }
 
-    public void getDueDate(Date dueDate){
+    public void getDueDate(LocalDate dueDate){
         this.dueDate = dueDate;
     }
     

@@ -5,10 +5,7 @@ import jakarta.validation.constraints.*;
 import jakarta.persistence.*;
 import org.hibernate.validator.constraints.URL;
 
-
-import com.example.MamaCare.MicroService.GenerateId.*;
-
-import java.util.Date;
+import java.time.LocalDate;
 
 /* Clinic Table*/
 
@@ -16,7 +13,9 @@ import java.util.Date;
 @Table(name = "Clinic")
 public class Clinic{
    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable=false)
+    @Id
     private Long id;
 
     @Column(name="Name", nullable=false)
@@ -27,7 +26,7 @@ public class Clinic{
 
     @Column(name="Joined At", nullable=false)
     @PastOrPresent
-    private Date joinedAt;
+    private LocalDate joinedAt;
 
     @Column(name="Location", nullable=false)
     @Size(max=2048, message="Location cannot be more than 2048characters!")
@@ -35,14 +34,14 @@ public class Clinic{
     @URL(protocol="https", message="Must be a valid URL.")
     private String location;
 
-    public Clinic(Long id, String name, Date joinedAt, String location){
-        this.id = (id != null) ? id : new GenerateId().generateId(); 
+    public Clinic(Long id, String name, LocalDate joinedAt, String location){
+        this.id = id;
         this.name = name;
         this.joinedAt = joinedAt;
         this.location = location;
     }
 
-    // Constractor Required by JPA
+    // Constructor Required by JPA
     public Clinic(){}
 
     // Getters
@@ -56,7 +55,7 @@ public class Clinic{
         return this.name;
     }
 
-    public Date getJoinedAt(){
+    public LocalDate getJoinedAt(){
         return this.joinedAt;
     }
 
@@ -65,22 +64,16 @@ public class Clinic{
     }
 
     //setters
-
-     public void setId(Long id){
-        this.id = id;
-     }
+    
     public void setName(String name){
         this.name = name;
     }
 
-    public void setJoinedAt(Date joinedAt){
+    public void setJoinedAt(LocalDate joinedAt){
         this.joinedAt = joinedAt;
     }
 
     public void setLocation(String location){
         this.location = location;
     }
-
-   
-
 }

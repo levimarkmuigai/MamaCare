@@ -3,14 +3,14 @@ package com.example.MamaCare.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
- import com.example.MamaCare.MicroService.GenerateId.*;
 
 @Entity
 @Table(name="Doctor")
 public class Doctor{
     
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Id", nullable=false)
-    @NotNull(message="Id cannot be null!")
+    @Id
     private Long id;
 
     @Column(name="First Name", nullable = false)
@@ -42,7 +42,7 @@ public class Doctor{
 
     public Doctor(Long id, String firstName, String lastName, int phoneNumber, String email, Boolean available){
 
-        this.id = (id != null) ? id : new GenerateId.generateId();
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
@@ -77,9 +77,6 @@ public class Doctor{
     }
 
     //setters
-    public void setId(Long id){
-        this.id = id;
-    }
 
     public void setFirstName(String firstName){
         this.firstName = firstName;
