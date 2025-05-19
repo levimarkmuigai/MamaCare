@@ -4,10 +4,14 @@ import com.example.MamaCare.model.Clinic;
 
 import com.example.MamaCare.repositories.ClinicRepository;
 
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 import java.util.Optional;
 
+@RestController
+@RequestMapping("/api/clinic")
 public class ClinicController{
    private final ClinicRepository operation;
 
@@ -16,22 +20,27 @@ public class ClinicController{
    }
 
    // Create a Clinic entity
-   public Clinic createClinic(Clinic clinic){
+   @PostMapping
+   public Clinic createClinic(@RequestBody Clinic clinic){
         return operation.save(clinic);
    }
 
    // List all Clinic's
+   @GetMapping
    public List<Clinic> fetchClinicList(){
         return operation.findAll();
    }
 
    //Find a single Clinic by id
-   public Optional<Clinic> fetchClinicById(Long id){
+   @GetMapping("{/id}")
+   public Optional<Clinic> fetchClinicById(@PathVariable Long id){
        return operation.findById(id);
     }
 
    //Update existing Clinic entity by id
-   public Optional<Clinic> updateClinic(Clinic updateClinic, Long id){
+   @PutMapping("{/id}")
+   public Optional<Clinic> updateClinic(@RequestBody Clinic updateClinic, 
+           @PathVariable Long id){
         return operation.findById(id).map(clinic -> {
             clinic.setName(updateClinic.getName());
             clinic.setJoinedAt(updateClinic.getJoinedAt());
@@ -44,7 +53,8 @@ public class ClinicController{
    }
 
    // Delete Clinic entity by id
-   public void deleteClinicById(Long id){
+   @DeleteMapping("{/id}")
+   public void deleteClinicById(@PathVariable Long id){
         if(operation.existsById(id)){
             operation.deleteById(id);
         }
