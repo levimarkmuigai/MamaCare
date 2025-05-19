@@ -32,13 +32,13 @@ public class DoctorController{
     }
 
     //Finds a single Doctor entity by id
-    @GetMapping("{/id}")
+    @GetMapping("/id")
     public Optional<Doctor> getDoctorById(@PathVariable Long id){
         return operation.findById(id);
     }
 
     //Updates a Doctor entity by id
-    @PutMapping("{/id}")
+    @PutMapping("/id")
     public Optional<Doctor> updateDoctor(@RequestBody Doctor updateDoctor,
             @PathVariable Long id){
                 return operation.findById(id).map(doctor ->{
@@ -55,7 +55,7 @@ public class DoctorController{
     }
 
     //Delete Doctor entity by id
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/id")
     public void deleteDoctor(@PathVariable Long id){
         if(operation.existsById(id)){
             operation.deleteById(id);

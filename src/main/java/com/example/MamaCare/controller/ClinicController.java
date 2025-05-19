@@ -32,13 +32,13 @@ public class ClinicController{
    }
 
    //Find a single Clinic by id
-   @GetMapping("{/id}")
+   @GetMapping("/id")
    public Optional<Clinic> fetchClinicById(@PathVariable Long id){
        return operation.findById(id);
     }
 
    //Update existing Clinic entity by id
-   @PutMapping("{/id}")
+   @PutMapping("/id")
    public Optional<Clinic> updateClinic(@RequestBody Clinic updateClinic, 
            @PathVariable Long id){
         return operation.findById(id).map(clinic -> {
@@ -53,7 +53,7 @@ public class ClinicController{
    }
 
    // Delete Clinic entity by id
-   @DeleteMapping("{/id}")
+   @DeleteMapping("/id")
    public void deleteClinicById(@PathVariable Long id){
         if(operation.existsById(id)){
             operation.deleteById(id);

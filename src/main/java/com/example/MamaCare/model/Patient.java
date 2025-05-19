@@ -134,7 +134,7 @@ public class Patient{
         this.email = email;
     }
 
-    public void age(LocalDate age){
+    public void setAge(LocalDate age){
         this.age = age;
     }
 
@@ -150,11 +150,11 @@ public class Patient{
         this.phoneNumber = phoneNumber;
     }
 
-    public void getDueDate(LocalDate dueDate){
+    public void setDueDate(LocalDate dueDate){
         this.dueDate = dueDate;
     }
     
-    public void getPreCondition(Boolean preCondition){
+    public void setPreCondition(Boolean preCondition){
         this.preCondition = preCondition;
     }
 }
