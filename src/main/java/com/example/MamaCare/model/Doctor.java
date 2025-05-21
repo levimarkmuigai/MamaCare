@@ -38,9 +38,16 @@ public class Doctor{
     @NotNull(message= "Should be true or false")
     private Boolean available;
 
+    //private Patient patient;
+ 
+    //private Clinic clinic;
+ 
+    //private Appointment appointment;
+
     public Doctor(){}
 
-    public Doctor(Long id, String firstName, String lastName, int phoneNumber, String email, Boolean available){
+    public Doctor(Long id, String firstName, String lastName, int phoneNumber, String email, Boolean available
+            /*Patient patient, Clinic clinic, Appointment appointment*/){
 
         this.id = id;
         this.firstName = firstName;
@@ -48,6 +55,11 @@ public class Doctor{
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.available = available;
+        /*
+            this.patient = patient;
+            this.clinic = clinic;
+            this.appointment = appointment;
+        */
 
     }
 
@@ -76,6 +88,18 @@ public class Doctor{
         return this.available;
     }
 
+    /*public Patient getPatient(){
+        return this.patient;
+    }
+
+    public Clinic getClinic(){
+        return this.clinic;
+    }
+
+    public Appointment getAppointment(){
+        return this.appointment;
+    }*/
+
     //setters
 
     public void setFirstName(String firstName){
@@ -90,11 +114,23 @@ public class Doctor{
         this.phoneNumber = phoneNumber;
     }
 
-    public void setEmail(String emal){
+    public void setEmail(String email){
         this.email = email;
     }
 
     public void setAvailable(Boolean available){
         this.available = available;
     }
+
+    /*public void setPatient(Patient patient){
+        this.patient = patient;
+    }
+
+    public void setClinic(Clinic clinic){
+        this.clinic = clinic;
+    }
+
+    public void setAppointment(Appointment appointment){
+        this.appointment = appointment;
+    }*/
 }

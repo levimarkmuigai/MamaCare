@@ -45,6 +45,9 @@ public class ClinicController{
             clinic.setName(updateClinic.getName());
             clinic.setJoinedAt(updateClinic.getJoinedAt());
             clinic.setLocation(updateClinic.getLocation());
+            /*clinic.setDoctor(updateClinic.getDoctor());
+            clinic.setPatient(updateClinic.getPatient());
+            clinic.setAppointment(updateClinic.getAppointment());*/
 
             Clinic saveClinic = operation.save(clinic);
 

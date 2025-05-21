@@ -1,8 +1,9 @@
 package com.example.MamaCare.model;
 
-
 import jakarta.validation.constraints.*;
+
 import jakarta.persistence.*;
+
 import org.hibernate.validator.constraints.URL;
 
 import java.time.LocalDate;
@@ -40,6 +41,12 @@ public class Clinic{
         this.joinedAt = joinedAt;
         this.location = location;
     }
+ 
+    //private Patient patient;
+
+    //private Doctor doctor;
+ 
+    //private Appointment appointment;
 
     // Constructor Required by JPA
     public Clinic(){}
@@ -63,6 +70,18 @@ public class Clinic{
         return this.location;
     }
 
+    /*public Patient getPatient(){
+        return this.patient;
+    }
+
+    public Doctor getDoctor(){
+        return this.doctor;
+    }
+
+    public Appointment getAppointment(){
+        return this.appointment;
+    }*/
+
     //setters
     
     public void setName(String name){
@@ -76,4 +95,16 @@ public class Clinic{
     public void setLocation(String location){
         this.location = location;
     }
+
+    /*public void setPatient(Patient patient){
+        this.patient = patient;
+    }
+
+    public void setDoctor(Doctor doctor){
+        this.doctor = doctor;
+    }
+
+    public void setAppointment(Appointment appointment){
+        this.appointment = appointment;
+    }*/
 }

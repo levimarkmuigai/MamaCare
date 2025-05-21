@@ -62,9 +62,18 @@ public class Patient{
     @Column(name="Preexisting Condition")
     @NotNull(message="Should be true or false!")
     private Boolean preCondition;
+ 
+   /* private Clinic clinic;
+ 
+    private Doctor doctor;
+ 
+    private Appointment appointment;*/
+
+    public Patient(){}
 
     public Patient(Long id, String firstName, String lastName, String email, String address,
-                    Boolean spouce, int phoneNumber, LocalDate age, LocalDate dueDate, Boolean preCondition){
+                    Boolean spouce, int phoneNumber, LocalDate age, LocalDate dueDate, Boolean preCondition
+                    /*Clinic clinic, Doctor doctor, Appointment appointment*/){
         
         this.id = id;
         this.firstName = firstName;
@@ -76,11 +85,12 @@ public class Patient{
         this.age = age;
         this.dueDate = dueDate;
         this.preCondition = preCondition;
+        /*this.clinic = clinic;
+        this.doctor = doctor;
+        this.appointment = appointment;*/
     }
 
-    public Patient(){}
-
-    // Getters
+   // Getters
     public Long getId(){
         return this.id;
     }
@@ -121,6 +131,18 @@ public class Patient{
         return this.preCondition;
     }
 
+    /*public Clinic getClinic(){
+        return this.clinic;
+    }
+
+    public Doctor getDoctor(){
+        return this.doctor;
+    }
+
+    public Appointment getAppointment(){
+        return this.appointment;
+    }*/
+
     //Setters
     public void setFirstName(String firstName){
         this.firstName = firstName;
@@ -157,5 +179,17 @@ public class Patient{
     public void setPreCondition(Boolean preCondition){
         this.preCondition = preCondition;
     }
+
+    /*public void setClinic(Clinic clinic){
+        this.clinic = clinic;
+    }
+
+    public void setDoctor(Doctor doctor){
+        this.doctor = doctor;
+    }
+
+    public void setAppointment(Appointment appointment){
+        this.appointment = appointment;
+    }*/
 }
 

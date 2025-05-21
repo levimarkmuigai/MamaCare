@@ -52,6 +52,9 @@ public class PatientController{
                     patient.setAge(updatePatient.getAge());
                     patient.setDueDate(updatePatient.getDueDate());
                     patient.setPreCondition(updatePatient.getPreCondition());
+                    /*patient.setClinic(updatePatient.getClinic());
+                    patient.setDoctor(updatePatient.getDoctor());
+                    patient.setAppointment(updatePatient.getAppointment());*/
 
                     Patient savePatient = new Patient();
 
