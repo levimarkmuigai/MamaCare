@@ -60,7 +60,7 @@ public class Doctor{
     public Doctor(){}
 
     public Doctor(Long id, String firstName, String lastName, int phoneNumber, String email, Boolean available,
-            List<Patient> patients, /*Clinic clinic,*/ List<Appointment> appointments){
+            List<Patient> patients, Clinic clinic, List<Appointment> appointments){
 
         this.id = id;
         this.firstName = firstName;
@@ -69,9 +69,7 @@ public class Doctor{
         this.email = email;
         this.available = available;
         this.patients = patients;
-        /*
-            this.clinic = clinic;
-        */
+        this.clinic = clinic;
         this.appointments = appointments;
     }
 
@@ -104,10 +102,9 @@ public class Doctor{
         return this.patients;
     }
 
-    /*public Clinic getClinic(){
+    public Clinic getClinic(){
         return this.clinic;
     }
-    */
     
     public List<Appointment> getAppointment(){
         return this.appointments;
@@ -138,11 +135,10 @@ public class Doctor{
     public void setPatient(List<Patient> patients){
         this.patients = patients;
     }
-    /*
+
     public void setClinic(Clinic clinic){
         this.clinic = clinic;
     }
-    */
     public void setAppointment(List<Appointment> appointments){
         this.appointments = appointments;
     }

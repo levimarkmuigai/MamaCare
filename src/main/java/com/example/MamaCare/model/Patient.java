@@ -71,8 +71,11 @@ public class Patient{
     @ManyToMany(mappedBy = "patients")
     private List<Doctor> doctors = new ArrayList();
     
-    /* private Clinic clinic;
-    private Appointment appointment;*/
+    @ManyToOne
+    @JoinColumn(name="clinic_id")
+    private Clinic clinic;
+
+    //private Appointment appointment;
 
     public Patient(){}
 
