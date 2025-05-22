@@ -3,6 +3,10 @@ package com.example.MamaCare.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.List;
+
+import java.util.ArrayList;
+
 
 @Entity
 @Table(name="Doctor")
@@ -41,13 +45,14 @@ public class Doctor{
     //private Patient patient;
  
     //private Clinic clinic;
- 
-    //private Appointment appointment;
+
+    @OneToMany(mappedBy="doctor")
+    private List<Appointment> appointments = new ArrayList();
 
     public Doctor(){}
 
-    public Doctor(Long id, String firstName, String lastName, int phoneNumber, String email, Boolean available
-            /*Patient patient, Clinic clinic, Appointment appointment*/){
+    public Doctor(Long id, String firstName, String lastName, int phoneNumber, String email, Boolean available,
+            /*Patient patient, Clinic clinic,*/ List<Appointment> appointments){
 
         this.id = id;
         this.firstName = firstName;
@@ -58,9 +63,8 @@ public class Doctor{
         /*
             this.patient = patient;
             this.clinic = clinic;
-            this.appointment = appointment;
         */
-
+        this.appointments = appointments;
     }
 
     // Getters
@@ -95,10 +99,12 @@ public class Doctor{
     public Clinic getClinic(){
         return this.clinic;
     }
+    */
 
-    public Appointment getAppointment(){
-        return this.appointment;
-    }*/
+
+    public List<Appointment> getAppointment(){
+        return this.appointments;
+    }
 
     //setters
 
@@ -129,8 +135,8 @@ public class Doctor{
     public void setClinic(Clinic clinic){
         this.clinic = clinic;
     }
-
-    public void setAppointment(Appointment appointment){
-        this.appointment = appointment;
-    }*/
+    */
+    public void setAppointment(List<Appointment> appointments){
+        this.appointments = appointments;
+    }
 }

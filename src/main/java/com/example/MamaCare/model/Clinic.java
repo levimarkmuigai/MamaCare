@@ -29,7 +29,7 @@ public class Clinic{
     @PastOrPresent
     private LocalDate joinedAt;
 
-    @Column(name="Location", nullable=false)
+    @Column(name="Location", nullable=false, unique = true)
     @Size(max=2048, message="Location cannot be more than 2048characters!")
     @NotBlank(message="Location cannot be blank!")
     @URL(protocol="https", message="Must be a valid URL.")

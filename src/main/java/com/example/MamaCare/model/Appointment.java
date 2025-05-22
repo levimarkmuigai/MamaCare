@@ -2,7 +2,9 @@ package com.example.MamaCare.model;
 
 import jakarta.persistence.*;
 
-import jakarta.validation.constraints.*; 
+import jakarta.validation.constraints.*;
+
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -25,7 +27,9 @@ public class Appointment{
  
     //private Patient patient;
  
-    //private Doctor doctor;
+    @ManyToOne
+    @JoinColumn(name="doctor_id")
+    private Doctor doctor;
  
     //private Clinic clinic;
 
