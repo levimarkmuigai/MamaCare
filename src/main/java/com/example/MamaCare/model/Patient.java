@@ -1,9 +1,14 @@
 package com.example.MamaCare.model;
 
 import jakarta.validation.constraints.*;
+
 import jakarta.persistence.*;
+
 import org.hibernate.validator.constraints.URL;
 
+import java.util.List;
+
+import java.util.ArrayList;
 
 import java.time.LocalDate;
 
@@ -62,18 +67,18 @@ public class Patient{
     @Column(name="Preexisting Condition")
     @NotNull(message="Should be true or false!")
     private Boolean preCondition;
- 
-   /* private Clinic clinic;
- 
-    private Doctor doctor;
- 
+
+    @ManyToMany(mappedBy = "patients")
+    private List<Doctor> doctors = new ArrayList();
+    
+    /* private Clinic clinic;
     private Appointment appointment;*/
 
     public Patient(){}
 
     public Patient(Long id, String firstName, String lastName, String email, String address,
-                    Boolean spouce, int phoneNumber, LocalDate age, LocalDate dueDate, Boolean preCondition
-                    /*Clinic clinic, Doctor doctor, Appointment appointment*/){
+                    Boolean spouce, int phoneNumber, LocalDate age, LocalDate dueDate, Boolean preCondition,
+                    /*Clinic clinic,  Appointment appointment,*/ List<Doctor> doctors){
         
         this.id = id;
         this.firstName = firstName;
@@ -85,8 +90,8 @@ public class Patient{
         this.age = age;
         this.dueDate = dueDate;
         this.preCondition = preCondition;
+        this.doctors = doctors;
         /*this.clinic = clinic;
-        this.doctor = doctor;
         this.appointment = appointment;*/
     }
 
@@ -131,15 +136,15 @@ public class Patient{
         return this.preCondition;
     }
 
+    public List<Doctor> getDoctor(){
+        return this.doctors;
+    }
+
     /*public Clinic getClinic(){
         return this.clinic;
     }
 
-    public Doctor getDoctor(){
-        return this.doctor;
-    }
-
-    public Appointment getAppointment(){
+   public Appointment getAppointment(){
         return this.appointment;
     }*/
 
@@ -180,12 +185,13 @@ public class Patient{
         this.preCondition = preCondition;
     }
 
-    /*public void setClinic(Clinic clinic){
-        this.clinic = clinic;
+    
+    public void setDoctor(List<Doctor> doctors){
+        this.doctors = doctors;
     }
 
-    public void setDoctor(Doctor doctor){
-        this.doctor = doctor;
+    /*public void setClinic(Clinic clinic){
+        this.clinic = clinic;
     }
 
     public void setAppointment(Appointment appointment){

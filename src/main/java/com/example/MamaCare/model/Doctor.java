@@ -42,7 +42,13 @@ public class Doctor{
     @NotNull(message= "Should be true or false")
     private Boolean available;
 
-    //private Patient patient;
+    @ManyToMany
+    @JoinTable(
+        name = "doctor_patient",
+        joinColumns = @JoinColumn(name= "doctor_id"),
+        inverseJoinColumns = @JoinColumn(name = "patient_id")
+    )
+    private List<Patient> patients = new ArrayList();
  
     //private Clinic clinic;
 
@@ -52,7 +58,7 @@ public class Doctor{
     public Doctor(){}
 
     public Doctor(Long id, String firstName, String lastName, int phoneNumber, String email, Boolean available,
-            /*Patient patient, Clinic clinic,*/ List<Appointment> appointments){
+            List<Patient> patients, /*Clinic clinic,*/ List<Appointment> appointments){
 
         this.id = id;
         this.firstName = firstName;
@@ -60,8 +66,8 @@ public class Doctor{
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.available = available;
+        this.patients = patients;
         /*
-            this.patient = patient;
             this.clinic = clinic;
         */
         this.appointments = appointments;
@@ -92,16 +98,15 @@ public class Doctor{
         return this.available;
     }
 
-    /*public Patient getPatient(){
-        return this.patient;
+    public List<Patient> getPatient(){
+        return this.patients;
     }
 
-    public Clinic getClinic(){
+    /*public Clinic getClinic(){
         return this.clinic;
     }
     */
-
-
+    
     public List<Appointment> getAppointment(){
         return this.appointments;
     }
@@ -128,10 +133,10 @@ public class Doctor{
         this.available = available;
     }
 
-    /*public void setPatient(Patient patient){
-        this.patient = patient;
+    public void setPatient(List<Patient> patients){
+        this.patients = patients;
     }
-
+    /*
     public void setClinic(Clinic clinic){
         this.clinic = clinic;
     }
