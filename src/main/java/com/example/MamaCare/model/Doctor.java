@@ -50,7 +50,9 @@ public class Doctor{
     )
     private List<Patient> patients = new ArrayList();
  
-    //private Clinic clinic;
+    @ManyToOne
+    @JoinColumn(name="clinic_id")
+    private Clinic clinic;
 
     @OneToMany(mappedBy="doctor")
     private List<Appointment> appointments = new ArrayList();

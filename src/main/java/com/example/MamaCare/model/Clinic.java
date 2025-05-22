@@ -8,6 +8,10 @@ import org.hibernate.validator.constraints.URL;
 
 import java.time.LocalDate;
 
+import java.util.List;
+
+import java.util.ArrayList;
+
 /* Clinic Table*/
 
 @Entity
@@ -35,16 +39,18 @@ public class Clinic{
     @URL(protocol="https", message="Must be a valid URL.")
     private String location;
 
-    public Clinic(Long id, String name, LocalDate joinedAt, String location){
+    @OneToMany(mappedBy="clinic")
+    private List<Doctor> doctors = new ArrayList();
+
+    public Clinic(Long id, String name, LocalDate joinedAt, String location, List<Doctor> doctors){
         this.id = id;
         this.name = name;
         this.joinedAt = joinedAt;
         this.location = location;
+        this.doctors = doctors;
     }
  
-    //private Patient patient;
-
-    //private Doctor doctor;
+    //private Patient patient; 
  
     //private Appointment appointment;
 
@@ -70,12 +76,12 @@ public class Clinic{
         return this.location;
     }
 
-    /*public Patient getPatient(){
-        return this.patient;
+    public List<Doctor> getDoctor(){
+        return this.doctors;
     }
 
-    public Doctor getDoctor(){
-        return this.doctor;
+    /*public Patient getPatient(){
+        return this.patient;
     }
 
     public Appointment getAppointment(){
@@ -96,12 +102,12 @@ public class Clinic{
         this.location = location;
     }
 
-    /*public void setPatient(Patient patient){
-        this.patient = patient;
+    public void setDoctor(List<Doctor> doctors){
+        this.doctors = doctors;
     }
 
-    public void setDoctor(Doctor doctor){
-        this.doctor = doctor;
+    /*public void setPatient(Patient patient){
+        this.patient = patient;
     }
 
     public void setAppointment(Appointment appointment){
