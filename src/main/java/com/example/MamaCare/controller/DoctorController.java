@@ -47,9 +47,9 @@ public class DoctorController{
                     doctor.setEmail(updateDoctor.getEmail());
                     doctor.setAvailable(updateDoctor.getAvailable());
                     doctor.setPhoneNumber(updateDoctor.getPhoneNumber());
-                    /*doctor.setPatient(updateDoctor.getPatient());
+                    doctor.setPatient(updateDoctor.getPatient());
                     doctor.setClinic(updateDoctor.getClinic());
-                    doctor.setAppointment(updateDoctor.getAppointment());*/
+                    doctor.setAppointment(updateDoctor.getAppointment());
                     
                     Doctor saveDoctor = new Doctor();
 

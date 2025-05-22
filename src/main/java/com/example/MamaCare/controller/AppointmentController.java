@@ -46,6 +46,9 @@ public class AppointmentController{
             return operation.findById(id).map(appointment ->{
                 appointment.setTime(updateAppointment.getTime());
                 appointment.setStatus(updateAppointment.getStatus());
+                appointment.setDoctor(updateAppointment.getDoctor());
+                appointment.setPatient(updateAppointment.getPatient());
+                appointment.setClinic(updateAppointment.getClinic());
 
                 Appointment saveAppointment = new Appointment();
 

@@ -1,5 +1,11 @@
 package com.example.MamaCare.DTO;
 
+import com.example.MamaCare.model.Doctor;
+
+import com.example.MamaCare.model.Clinic;
+
+import com.example.MamaCare.model.Appointment;
+
 import java.time.LocalDate;
 
 public record PatientDTO(
@@ -12,5 +18,8 @@ public record PatientDTO(
         int phoneNumber,
         LocalDate age,
         LocalDate dueDate,
-        Boolean preCondition
+        Boolean preCondition,
+        Doctor doctor,
+        Clinic clinic,
+        Appointment appointment
         ){}

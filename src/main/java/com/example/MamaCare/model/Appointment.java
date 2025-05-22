@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 
 import jakarta.validation.constraints.*;
 
-import org.springframework.web.bind.annotation.*;
-
 import java.time.LocalDate;
 
 // Appointment Table
@@ -88,7 +86,7 @@ public class Appointment{
         this.doctor = doctor;
     }
 
-    public void getPatient(Patient patient){
+    public void setPatient(Patient patient){
         this.patient = patient;
     }
 
