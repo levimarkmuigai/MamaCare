@@ -45,19 +45,21 @@ public class Clinic{
     @OneToMany(mappedBy="clinic")
     private List<Patient> patients = new ArrayList();
 
+    @OneToMany(mappedBy="clinic")
+    private List<Appointment> appointments = new ArrayList();
+
     public Clinic(Long id, String name, LocalDate joinedAt, String location, 
-            List<Doctor> doctors, List<Patient> patients){
+            List<Doctor> doctors, List<Patient> patients, List<Appointment> appointments){
         this.id = id;
         this.name = name;
         this.joinedAt = joinedAt;
         this.location = location;
         this.doctors = doctors;
         this.patients = patients;
+        this.appointments = appointments;
     }
   
-    //private Appointment appointment;
-
-    // Constructor Required by JPA
+     // Constructor Required by JPA
     public Clinic(){}
 
     // Getters
@@ -87,10 +89,9 @@ public class Clinic{
         return this.patients;
     }
 
-    /*
-    public Appointment getAppointment(){
-        return this.appointment;
-    }*/
+    public List<Appointment> getAppointment(){
+        return this.appointments;
+    }
 
     //setters
     
@@ -114,7 +115,7 @@ public class Clinic{
         this.patients = patients;
     }
 
-    /*public void setAppointment(Appointment appointment){
-        this.appointment = appointment;
-    }*/
+    public void setAppointment(List<Appointment> appointments){
+        this.appointments = appointments;
+    }
 }

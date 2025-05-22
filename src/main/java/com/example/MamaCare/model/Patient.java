@@ -75,13 +75,15 @@ public class Patient{
     @JoinColumn(name="clinic_id")
     private Clinic clinic;
 
-    //private Appointment appointment;
+    @OneToOne
+    @JoinColumn(name="appointment_id")
+    private Appointment appointment;
 
     public Patient(){}
 
     public Patient(Long id, String firstName, String lastName, String email, String address,
                     Boolean spouce, int phoneNumber, LocalDate age, LocalDate dueDate, Boolean preCondition,
-                    /*Clinic clinic,  Appointment appointment,*/ List<Doctor> doctors){
+                    Clinic clinic,  Appointment appointment, List<Doctor> doctors){
         
         this.id = id;
         this.firstName = firstName;
@@ -94,8 +96,8 @@ public class Patient{
         this.dueDate = dueDate;
         this.preCondition = preCondition;
         this.doctors = doctors;
-        /*this.clinic = clinic;
-        this.appointment = appointment;*/
+        this.clinic = clinic;
+        this.appointment = appointment;
     }
 
    // Getters
@@ -143,13 +145,13 @@ public class Patient{
         return this.doctors;
     }
 
-    /*public Clinic getClinic(){
+    public Clinic getClinic(){
         return this.clinic;
     }
 
-   public Appointment getAppointment(){
+    public Appointment getAppointment(){
         return this.appointment;
-    }*/
+    }
 
     //Setters
     public void setFirstName(String firstName){
@@ -193,12 +195,12 @@ public class Patient{
         this.doctors = doctors;
     }
 
-    /*public void setClinic(Clinic clinic){
+    public void setClinic(Clinic clinic){
         this.clinic = clinic;
     }
 
     public void setAppointment(Appointment appointment){
         this.appointment = appointment;
-    }*/
+    }
 }
 

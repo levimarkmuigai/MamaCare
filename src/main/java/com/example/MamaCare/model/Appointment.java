@@ -25,25 +25,29 @@ public class Appointment{
     @NotNull(message="Status cannot be empty!")
     private Boolean status;
  
-    //private Patient patient;
+    @OneToOne
+    @JoinColumn(name = "patient_id")
+    private Patient patient;
  
     @ManyToOne
     @JoinColumn(name="doctor_id")
     private Doctor doctor;
  
-    //private Clinic clinic;
+    @ManyToOne
+    @JoinColumn(name = "clinic_id")
+    private Clinic clinic;
 
     public Appointment(){}
 
-    public Appointment(Long id, LocalDate time, Boolean status
-            /*Doctor doctor, Patient patient, Clinic clinic*/){
+    public Appointment(Long id, LocalDate time, Boolean status,
+            Doctor doctor, Patient patient,Clinic clinic){
         
         this.id = id;
         this.time = time;
         this.status = status;
-        /*this.doctor = doctor;
+        this.doctor = doctor;
         this.patient = patient;
-        this.clinic = clinic;*/
+        this.clinic = clinic;
     }
 
     // Getters
@@ -59,17 +63,17 @@ public class Appointment{
         return this.status;
     }
 
-    /*public Doctor getDoctor(){
+    public Doctor getDoctor(){
         return this.doctor;
     }
 
     public Patient getPatient(){
         return this.patient;
     }
-
+    
     public Clinic getClinic(){
         return this.clinic;
-    }*/
+    }
 
     //setters
     public void setTime(LocalDate time){
@@ -80,7 +84,7 @@ public class Appointment{
         this.status = status;
     }
 
-     /*public void setDoctor(Doctor doctor){
+     public void setDoctor(Doctor doctor){
         this.doctor = doctor;
     }
 
@@ -90,5 +94,5 @@ public class Appointment{
 
     public void setClinic(Clinic clinic){
         this.clinic = clinic;
-    }*/
+    }
 }
