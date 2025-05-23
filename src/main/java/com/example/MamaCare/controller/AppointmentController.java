@@ -38,17 +38,15 @@ public class AppointmentController{
         return operation.findById(id);
     }
 
-    // Update an Appointment by id
+     // Update an Appointment by id
     @PutMapping("/id")
     public Optional<Appointment> updateAppointment(@RequestParam Appointment updateAppointment,
             @PathVariable Long id){
     
             return operation.findById(id).map(appointment ->{
-                appointment.setTime(updateAppointment.getTime());
-                appointment.setStatus(updateAppointment.getStatus());
-                appointment.setDoctor(updateAppointment.getDoctor());
-                appointment.setPatient(updateAppointment.getPatient());
-                appointment.setClinic(updateAppointment.getClinic());
+                appointment.setInitialAppointment(updateAppointment.getInitialAppointment());
+                appointment.setCurrentAppointment(updateAppointment.getCurrentAppointment());
+                appointment.setNextAppointment(updateAppointment.getNextAppointment());
 
                 Appointment saveAppointment = new Appointment();
 

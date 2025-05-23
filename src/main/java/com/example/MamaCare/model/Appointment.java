@@ -14,83 +14,58 @@ public class Appointment{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="time", nullable = false)
-    @PastOrPresent
-    @NotNull(message="Time cannot be null!")
-    private LocalDate time;
+    @Column(name="initial_appointment", nullable = true)
+    private LocalDate initialAppointment;
 
-    @Column(name="status", nullable = false)
-    @NotNull(message="Status cannot be empty!")
-    private Boolean status;
- 
-    @OneToOne
-    @JoinColumn(name = "patient_id")
-    private Patient patient;
- 
-    @ManyToOne
-    @JoinColumn(name="doctor_id")
-    private Doctor doctor;
- 
-    @ManyToOne
-    @JoinColumn(name = "clinic_id")
-    private Clinic clinic;
+    @Column(name="current_appointment", nullable = false)
+    @NotNull(message="Current Appointment cannot be null!")
+    private LocalDate currentAppointment;
+
+    @Column(name="next_appointment", nullable = false)
+    @NotNull(message="Next appointment cannot be null!!")
+    private LocalDate nextAppointment;
 
     public Appointment(){}
 
-    public Appointment(Long id, LocalDate time, Boolean status,
-            Doctor doctor, Patient patient,Clinic clinic){
+    public Appointment(Long id, LocalDate initialAppointment, LocalDate currentAppointment, LocalDate nextAppointment){
         
         this.id = id;
-        this.time = time;
-        this.status = status;
-        this.doctor = doctor;
-        this.patient = patient;
-        this.clinic = clinic;
+        this.initialAppointment = initialAppointment;
+        this.currentAppointment = currentAppointment;
+        this.nextAppointment = nextAppointment;
     }
 
-    // Getters
+    //Getters
     public Long getId(){
         return this.id;
     }
 
-    public LocalDate getTime(){
-        return this.time;
+    public LocalDate getInitialAppointment(){
+        return this.initialAppointment;
     }
 
-    public Boolean getStatus(){
-        return this.status;
+    public LocalDate getCurrentAppointment(){
+        return this.currentAppointment;
     }
 
-    public Doctor getDoctor(){
-        return this.doctor;
+    public LocalDate getNextAppointment(){
+        return this.nextAppointment;
     }
 
-    public Patient getPatient(){
-        return this.patient;
-    }
-    
-    public Clinic getClinic(){
-        return this.clinic;
+    //setters 
+    public void setId(Long id){
+        this.id = id;
     }
 
-    //setters
-    public void setTime(LocalDate time){
-        this.time = time;
+    public void setInitialAppointment(LocalDate initialAppointment){
+       this.initialAppointment = initialAppointment; 
     }
 
-    public void setStatus(Boolean status){
-        this.status = status;
+    public void setCurrentAppointment(LocalDate currentAppointment){
+        this.currentAppointment = currentAppointment;
     }
 
-     public void setDoctor(Doctor doctor){
-        this.doctor = doctor;
-    }
-
-    public void setPatient(Patient patient){
-        this.patient = patient;
-    }
-
-    public void setClinic(Clinic clinic){
-        this.clinic = clinic;
+    public void setNextAppointment(LocalDate nextAppointment){
+        this.nextAppointment = nextAppointment;
     }
 }

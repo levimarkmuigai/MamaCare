@@ -4,5 +4,11 @@ import com.example.MamaCare.model.Appointment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.*;
 
-public interface AppointmentRepository extends JpaRepository<Appointment, Long>{}
+import java.util.List;
+
+public interface AppointmentRepository extends JpaRepository<Appointment, Long>{
+        
+    List<Appointment> findNextAppointmentDate(LocalDate date);
+}
