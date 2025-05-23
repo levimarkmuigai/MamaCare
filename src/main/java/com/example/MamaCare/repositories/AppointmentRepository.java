@@ -10,5 +10,5 @@ import java.util.List;
 
 public interface AppointmentRepository extends JpaRepository<Appointment, Long>{
         
-    List<Appointment> findNextAppointmentDate(LocalDate date);
+    List<Appointment> findByNextAppointment(LocalDate date);
 }
